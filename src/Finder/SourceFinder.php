@@ -45,7 +45,7 @@ final class SourceFinder
     private function processDirectory(array $files, string $directory): array
     {
         $finder = (new Finder)->files()
-            ->name('*.php')
+            ->name('*.{php,phpt}')
             ->in($directory);
 
         return array_merge($files, iterator_to_array($finder->getIterator()));

@@ -68,12 +68,12 @@ final class Fixer
 
     public function addNewline(int $stackPtr): bool
     {
-        return $this->addContent($stackPtr, PHP_EOL);
+        return $this->addContent($stackPtr, "\n");
     }
 
     public function addNewlineBefore(int $stackPtr): bool
     {
-        return $this->addContentBefore($stackPtr, PHP_EOL);
+        return $this->addContentBefore($stackPtr, "\n");
     }
 
     public function substrToken(int $stackPtr, int $start, ?int $length = null): bool

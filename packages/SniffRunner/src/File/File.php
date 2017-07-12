@@ -53,7 +53,7 @@ final class File extends BaseFile
         $this->content = file_get_contents($path);
         $this->isFixer = $isFixer;
 
-        $this->eolChar = PHP_EOL;
+        $this->eolChar = "\n";
     }
 
     /**

@@ -21,7 +21,7 @@ final class FileToTokensParser
     {
         $fileContent = FileSystem::read($filePath);
 
-        return (new PHP($fileContent, $this->getLegacyConfig(), PHP_EOL))->getTokens();
+        return (new PHP($fileContent, $this->getLegacyConfig(), "\n"))->getTokens();
     }
 
     /**

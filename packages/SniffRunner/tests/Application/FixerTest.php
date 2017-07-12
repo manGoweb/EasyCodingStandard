@@ -81,11 +81,11 @@ final class FixerTest extends AbstractContainerAwareTestCase
 
         $this->fixer->addNewline(13);
         $token = $this->fixer->getTokenContent(13);
-        $this->assertSame('\\' . PHP_EOL, $token);
+        $this->assertSame('\\' . "\n", $token);
 
         $this->fixer->addNewlineBefore(13);
         $token = $this->fixer->getTokenContent(13);
-        $this->assertSame(PHP_EOL . '\\' . PHP_EOL, $token);
+        $this->assertSame("\n" . '\\' . "\n", $token);
     }
 
     public function testSubstrToken(): void

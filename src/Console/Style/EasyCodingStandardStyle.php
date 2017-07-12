@@ -127,7 +127,7 @@ final class EasyCodingStandardStyle
     {
         $rows = [];
         foreach ($errors as $error) {
-            $message = $error->getMessage() . PHP_EOL . '(' . $error->getSourceClass() . ')';
+            $message = $error->getMessage() . "\n" . '(' . $error->getSourceClass() . ')';
             $rows[] = $this->buildRow($error, $message);
         }
 
@@ -161,7 +161,7 @@ final class EasyCodingStandardStyle
     private function wrapTextSoItFitsTheColumnWidth(array $rows): array
     {
         foreach ($rows as $id => $row) {
-            $rows[$id]['message'] = wordwrap($row['message'], $this->countMessageColumnWidth(), PHP_EOL);
+            $rows[$id]['message'] = wordwrap($row['message'], $this->countMessageColumnWidth(), "\n");
         }
 
         return $rows;

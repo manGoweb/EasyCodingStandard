@@ -120,7 +120,7 @@ final class FixerFileProcessor implements FileProcessorInterface
     {
         $line = 0;
         foreach ($tokens as $token) {
-            $line += substr_count($token->getContent(), PHP_EOL);
+            $line += substr_count($token->getContent(), "\n");
             if ($token->isChanged()) {
                 return ++$line;
             }

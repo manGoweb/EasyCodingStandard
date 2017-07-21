@@ -145,15 +145,26 @@ final class CheckersExtension extends Extension
             return;
         }
 
-        $indentation = $containerBuilder->hasParameter('indentation') ?
-            $containerBuilder->getParameter('indentation') : 'spaces';
-        if ($indentation === 'spaces') {
-            $indentation = '    ';
-        } elseif ($indentation === 'tab') {
-            $indentation = '	';
-        }
+        $indentation = $containerBuilder->hasParameter('indentation')
+            ? $containerBuilder->getParameter('indentation')
+            : 'spaces';
 
-        $whitespacesFixerConfigDefinition = new Definition(WhitespacesFixerConfig::class, [$indentation]);
+        $lineEnding = $containerBuilder->hasParameter('lineEnding')
+            ? $containerBuilder->getParameter('lineEnding')
+            : 'native';
+
+        $indentationMap = [
+            'spaces' => '    ',
+            'tab' => "\t",
+        ];
+
+        $lineEndingMap = [
+            'crlf' => "\r\n",
+            'lf' => "\n",
+            'native' => PHP_EOL,
+        ];
+
+        $whitespacesFixerConfigDefinition = new Definition(WhitespacesFixerConfig::class, [$indentationMap[$indentation] ?? $indentation, $lineEndingMap[$lineEnding] ?? $lineEnding]);
         $containerBuilder->setDefinition('fixerWhitespaceConfig', $whitespacesFixerConfigDefinition);
 
         $this->isWhitespaceFixerConfigRegistered = true;
